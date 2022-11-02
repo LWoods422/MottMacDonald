@@ -37,7 +37,6 @@ namespace MottMacDonald
             _driver.ElementExists(By.CssSelector("#CountryFacet > ul > li:nth-child(1) > div > label > input"));
             searchBoxInput.Click();
             searchBoxInput.SendKeys(job);
-            //Thread.Sleep(5000);
             searchButton.Click();
         }
 
