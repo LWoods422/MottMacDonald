@@ -43,7 +43,7 @@ namespace MottMacDonald.StepDefinitions
 
         }
 
-        [Then(@"I verify when i click on “view Job” I am directed to the details for the '([^']*)'")]
+        [Then(@"I verify when I click on “view Job” I am directed to the details for the '([^']*)'")]
         public void ThenIVerifyWhenIClickOnViewJobIAmDirectedToTheDetailsForThe(string job)
         {
             var expectedJob = job.TitleCaseString();

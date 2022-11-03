@@ -17,11 +17,11 @@ namespace MottMacDonald
             _driver = webDriver;
         }
 
-        private List<IWebElement> allLinks => _driver.FindElements(By.TagName("a")).ToList();
+        private List<IWebElement> AllLinks => _driver.FindElements(By.TagName("a")).ToList();
 
         public List<IWebElement> ReturnAllLinks()
         {
-            return allLinks;
+            return AllLinks;
         }
        
 

@@ -11,8 +11,8 @@ namespace MottMacDonald
             _driver = webDriver;
         }
 
-        private IWebElement acceptCookies => _driver.FindElement(By.Id("ccc-notify-accept"), 20);
-        private IWebElement english => _driver.FindElement(By.CssSelector("#cultureModal > div > div:nth-child(4) > ul > li:nth-child(1) > a"));
+        private IWebElement AcceptCookiesButton => _driver.FindElement(By.Id("ccc-notify-accept"), 20);
+        private IWebElement GlobalEnglishButton => _driver.FindElement(By.CssSelector("#cultureModal > div > div:nth-child(4) > ul > li:nth-child(1) > a"));
 
         public void NavigateToUrl(string url)
         {
@@ -22,18 +22,18 @@ namespace MottMacDonald
 
         public void AcceptCookies()
         {
-            if(acceptCookies.Displayed)
+            if(AcceptCookiesButton.Displayed)
             {
-                acceptCookies.Click();
+                AcceptCookiesButton.Click();
             }
 
         }
 
         public void CloseLanguageBox()
         {
-            if (english.Displayed)
+            if (GlobalEnglishButton.Displayed)
             {
-                english.Click();
+                GlobalEnglishButton.Click();
             }
         }
 

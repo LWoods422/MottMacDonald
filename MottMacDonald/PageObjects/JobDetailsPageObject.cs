@@ -19,12 +19,12 @@ namespace MottMacDonald
         }
 
 
-        private IWebElement jobDetailsBreadcrumb => _driver.FindElement(By.XPath("//span[@class='lastBreadcrumb']"), 20);
+        private IWebElement JoDetailsBreadcrumb => _driver.FindElement(By.XPath("//span[@class='lastBreadcrumb']"), 20);
 
 
         public string ReturnJobBreadcrumb()
         {
-           return jobDetailsBreadcrumb.Text;
+           return JoDetailsBreadcrumb.Text;
         }
     }
 }
