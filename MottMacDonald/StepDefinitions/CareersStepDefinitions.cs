@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System.Linq;
 using TechTalk.SpecFlow;
 
 namespace MottMacDonald.StepDefinitions
@@ -36,7 +35,6 @@ namespace MottMacDonald.StepDefinitions
         [Then(@"I verify the search returns '([^']*)'")]
         public void ThenIVerifyTheSearchReturns(string job)
         {
-            List<string> words = job.Split(' ').ToList();
             var matchingJobs = _careersPageObject.ReturnSearchResults(job);
 
             Assert.IsTrue(matchingJobs.Any());

@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MottMacDonald
 {
@@ -22,23 +17,6 @@ namespace MottMacDonald
             return driver.FindElement(by);
         }
 
-        public static void ClickWhenDisplayed(this IWebElement webElement)
-        {
-            if (SpinWait.SpinUntil(() => webElement.Displayed, 20000))
-            {
-                webElement.Click();
-            }
-            else
-            {
-                throw new ElementNotInteractableException($"WebElement {webElement} not found, when attempting to click");
-            }
-        }
-
-        public static string TitleCaseString(this string stringToConvert)
-        {
-            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-            return textInfo.ToTitleCase(stringToConvert);
-        }
 
         public static void ElementExists(this IWebDriver driver, By by)
         {
@@ -46,5 +24,14 @@ namespace MottMacDonald
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(by));
         }
 
+        public static void ClickOnElement(this IWebDriver driver, IWebElement element)
+        {
+            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            wait.Until((IWebDriver d) => {
+                element.Click();
+                return true;
+            }); 
+        }
     }
 }

@@ -1,8 +1,4 @@
-﻿using NUnit.Framework;
-using System.Net;
-using System.Text;
-using TechTalk.SpecFlow;
-using System.Linq;
+﻿using TechTalk.SpecFlow;
 
 namespace MottMacDonald.StepDefinitions
 {
@@ -19,8 +15,8 @@ namespace MottMacDonald.StepDefinitions
 
         private readonly string homepageUrl = "https://www.mottmac.com/";
 
-        [Then(@"All links are outputted to a Text File")]
-        public async Task ThenAllLinksAreOutputtedToATextFile()
+        [Then(@"All links are outputted to a Text File called ""([^""]*)""")]
+        public async Task ThenAllLinksAreOutputtedToATextFileCalled(string fileName)
         {
             var links = new List<string>();
             var allLinks = _homePagePageObject.ReturnAllLinks();
@@ -33,8 +29,9 @@ namespace MottMacDonald.StepDefinitions
                 links.Add($"Link was {linkUrl}, and response was {response.StatusCode}");
             });
 
-            File.WriteAllLines(@"\Work\Test.txt", links);
+            File.WriteAllLines($@"\Work\{fileName}.txt", links);
         }
+
 
 
 

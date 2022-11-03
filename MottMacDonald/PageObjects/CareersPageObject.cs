@@ -1,12 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MottMacDonald
 {
@@ -34,26 +26,34 @@ namespace MottMacDonald
 
         public List<IWebElement> ReturnSearchResults(string job)
         {
-            var elements = SearchResults;
+
             var jobTitle = job.TitleCaseString();
-
-            var requeryResults = SearchResults;
-
-            var matchingvalues = requeryResults
+            try
+            {
+                var matchingvalues = SearchResults
                 .Where(stringToCheck => stringToCheck.Text.Contains(jobTitle));
-            return matchingvalues.ToList();
+                return matchingvalues.ToList();
+            }
+            catch (StaleElementReferenceException)
+            {
+                var matchingvalues = SearchResults
+                .Where(stringToCheck => stringToCheck.Text.Contains(jobTitle));
+                return matchingvalues.ToList();
+            }
+
         }
 
         public void ClickViewJob()
         {
             try
             {
-                ViewJob.First().ClickWhenDisplayed();
+                _driver.ClickOnElement(ViewJob.First());
+
             }
-            catch (StaleElementReferenceException)
+            catch (Exception e)
             {
 
-                ViewJob.First().ClickWhenDisplayed();
+                throw new Exception($"Cant Select Element {ViewJob}", e);
             }
 
             _driver.Navigate().Refresh();

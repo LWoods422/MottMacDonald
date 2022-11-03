@@ -11,7 +11,7 @@ namespace MottMacDonald
             _driver = webDriver;
         }
 
-        private IWebElement AcceptCookiesButton => _driver.FindElement(By.Id("ccc-notify-accept"), 20);
+        private IWebElement AcceptCookiesButton => _driver.FindElement(By.Id("ccc-notify-accept"));
         private IWebElement GlobalEnglishButton => _driver.FindElement(By.CssSelector("#cultureModal > div > div:nth-child(4) > ul > li:nth-child(1) > a"));
 
         public void NavigateToUrl(string url)

@@ -74,11 +74,10 @@ namespace MottMacDonald.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CareersPage")]
+        [NUnit.Framework.DescriptionAttribute("Job Search Returns Expected Result")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("Project Manager- Water Resources", null)]
         [NUnit.Framework.TestCaseAttribute("Test Automation Engineer", null)]
-        public void CareersPage(string job, string[] exampleTags)
+        public void JobSearchReturnsExpectedResult(string job, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tag1"};
@@ -89,7 +88,7 @@ namespace MottMacDonald.Features
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job", job);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CareersPage", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Job Search Returns Expected Result", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
